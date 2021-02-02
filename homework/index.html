@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <title>스파르타코딩클럽 | 부트스트랩 연습하기</title>
+    <style>
+        .wrapper{
+            width: 50vw;
+            margin: auto;
+            border: solid 1px black;
+            border-radius: 10px;
+            padding-top: 10px;
+        }
+
+        img{
+            width: 70%;
+            margin: auto;
+            display: block;
+        }
+
+        .product, .order{
+            width: 80%;
+            margin: 10px auto 20px auto;
+        }
+
+        .price{
+            margin-left: 20px;
+            font-size: 20px;
+        }
+
+        .button-wrapper{
+            width: 130%;
+        }
+
+        .order-btn{
+            margin: auto;
+            display: block;
+        }
+
+
+
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <img src="https://img.freepik.com/free-vector/pastel-color-watercolor-stain-background_52683-12283.jpg?size=626&ext=jpg&ga=GA1.2.1302523727.1611446400">
+        <div class="product">
+            <div class="product-header">
+                <h2>솜사탕 팝니다 <span class="price">개당 5천원</span></h2>
+
+            </div>
+            <div class="content">
+                나뭇가지에 실처럼 날아든 솜사탕 하얀눈처럼 희고도 깨끗한 솜사탕 엄마손잡고 나들이 갈때 먹어본 솜사탕 후후 불면은 구멍이 뚫리는 커다란 솜사탕이 단돈 오천원
+            </div>
+        </div>
+        <div class="order">
+            <h2>주문하기</h2>
+            <div class="order-form">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">주문자이름</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Default"
+                           aria-describedby="inputGroup-sizing-default">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01">수량</label>
+                    </div>
+                    <select class="custom-select" id="inputGroupSelect01">
+                        <option selected>-- 수량을 선택하세요 --</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">주소</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Default"
+                           aria-describedby="inputGroup-sizing-default">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">전화번호</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Default"
+                           aria-describedby="inputGroup-sizing-default">
+                </div>
+                <div class="form-group row button-wrapper">
+                    <div class="col-sm-10">
+                        <button type="submit" class="btn btn-primary order-btn" onclick="orderEvent()">주문하기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function orderEvent(){
+            alert('주문을 완료했습니다')
+        }
+
+
+    </script>
+</body>
+
+</html>

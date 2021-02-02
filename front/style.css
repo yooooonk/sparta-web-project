@@ -1,0 +1,29 @@
+.wrapper{
+    width: 60vw;
+    margin: auto;
+}
+
+.jumbotron{
+    font-family: 'Gugi', cursive;
+}
+
+.card, .form{
+    font-family: 'Noto Serif KR', serif;
+}
+
+.card .title{
+    color: #7272ff;
+}
+
+.card .comment{
+    color: #d080d0;
+
+}
+
+.form{
+    width:60%;
+    margin: 0px auto 20px auto;
+    padding: 30px;
+    border:2px solid black;
+    border-radius: 10px;
+}
