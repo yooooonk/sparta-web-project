@@ -19,9 +19,16 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&display=swap" rel="stylesheet">
     <title>스파르타코딩클럽 | 부트스트랩 연습하기</title>
     <style>
+
+        *{
+            font-family: 'East Sea Dokdo', cursive;
+            font-size: 20px;
+        }
+
         .wrapper{
             width: 50vw;
             margin: auto;
@@ -55,7 +62,9 @@
             display: block;
         }
 
-
+        .rate{
+            color:blue
+        }
 
     </style>
 </head>
@@ -73,7 +82,7 @@
             </div>
         </div>
         <div class="order">
-            <h2>주문하기</h2>
+            <span class="rate">달러원 환율 :</span>
             <div class="order-form">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -120,6 +129,22 @@
         function orderEvent(){
             alert('주문을 완료했습니다')
         }
+        function getRate(){
+             $.ajax({
+                type: "GET",
+                url: "https://api.manana.kr/exchange/rate.json",
+                data: {},
+                success: function (response) {
+                    const rate = response[1]['rate'];
+                    $('.rate').text(`달러원 환율 : ${rate}`)
+                }
+            })
+        }
+
+        $(document).ready(function(){
+            getRate();
+        })
+
 
 
     </script>
