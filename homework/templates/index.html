@@ -89,13 +89,13 @@
                         <span class="input-group-text">주문자이름</span>
                     </div>
                     <input type="text" class="form-control" aria-label="Default"
-                           aria-describedby="inputGroup-sizing-default">
+                           aria-describedby="inputGroup-sizing-default" id="name">
                 </div>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <label class="input-group-text" for="inputGroupSelect01">수량</label>
+                        <label class="input-group-text" for="count">수량</label>
                     </div>
-                    <select class="custom-select" id="inputGroupSelect01">
+                    <select class="custom-select" id="count">
                         <option selected>-- 수량을 선택하세요 --</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -107,27 +107,82 @@
                         <span class="input-group-text">주소</span>
                     </div>
                     <input type="text" class="form-control" aria-label="Default"
-                           aria-describedby="inputGroup-sizing-default">
+                           aria-describedby="inputGroup-sizing-default" id="address">
                 </div>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text">전화번호</span>
                     </div>
                     <input type="text" class="form-control" aria-label="Default"
-                           aria-describedby="inputGroup-sizing-default">
+                           aria-describedby="inputGroup-sizing-default" id="phone">
                 </div>
                 <div class="form-group row button-wrapper">
                     <div class="col-sm-10">
-                        <button type="submit" class="btn btn-primary order-btn" onclick="orderEvent()">주문하기</button>
+                        <button type="submit" class="btn btn-primary order-btn" onclick="order()">주문하기</button>
                     </div>
                 </div>
             </div>
         </div>
+        <table class="table">
+		  <thead>
+		    <tr>
+		      <th scope="col">이름</th>
+		      <th scope="col">수량</th>
+		      <th scope="col">주소</th>
+		      <th scope="col">전화번호</th>
+		    </tr>
+		  </thead>
+		  <tbody id="tableBody">
+
+		  </tbody>
+		</table>
     </div>
 
     <script>
-        function orderEvent(){
-            alert('주문을 완료했습니다')
+        $(document).ready(function () {
+                getOrderLists();
+        });
+        function getOrderLists() {
+                $.ajax({
+                    type: "GET",
+                    url: "/order",
+                    data: {},
+                    success: function (response) {
+                        const orderLists = response.data;
+
+                        orderLists.forEach((order) => {
+                            content = `
+                            <tr>
+                              <th scope="row">${order.name}</th>
+                              <td>${order.count}</td>
+                              <td>${order.address}</td>
+                              <td>${order.phone}</td>
+                            </tr>
+                        `
+
+                            $('#tableBody').append(content)
+                        })
+                    }
+
+                })
+        }
+
+        function order(){
+            const name = $('#name').val();
+            const address = $('#address').val();
+            const count = $('#count').val();
+            const phone = $('#phone').val();
+
+
+                $.ajax({
+                    type: "POST",
+                    url: "/order",
+                    data: {name, address, count, phone},
+                    success: function (response) { // 성공하면
+                        alert(response["msg"]);
+                        window.location.reload();
+                    }
+                })
         }
         function getRate(){
              $.ajax({
