@@ -97,6 +97,39 @@
 </div>
 
 <script>
+    $(document).ready(()=>{
+        fetchData();
+    })
+
+    const fetchData = ()=>{
+        $.ajax({
+                type: "GET",
+                url: "http://spartacodingclub.shop/post",
+                data: {},
+                success: function (response) {
+                    paintList(response.articles);
+                }
+        })
+    }
+
+    const paintList = (data)=>{
+        console.log(data)
+        $('#cards-box').empty();
+        data.forEach(v=>{
+            const content = `
+                <div class="card">
+                    <img class="card-img-top" src="${v.image}" alt="Card image cap">
+                    <div class="card-body">
+                        <a href="#">${v.title}</a>
+                        <p class="card-text content">${v.desc}</p>
+                        <p class="card-text comment">${v.comment}</p>
+                    </div>
+                </div>
+            `
+
+            $('#cards-box').append(content);
+        })
+    }
     const btn = document.querySelector('.open-btn');
     let count = 1;
     const openClose = ()=>{
